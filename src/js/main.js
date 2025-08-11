@@ -1,61 +1,4 @@
 
-// Динамически подгружать блок статей для выбранного языка через fetch
-async function showArticlesByLang(lang) {
-  const main = document.querySelector('main');
-  if (!main) return;
-  // Удаляем все существующие блоки статей
-  main.querySelectorAll('[data-lang]').forEach(div => div.remove());
-  // Создаём новый блок и подгружаем содержимое
-  const div = document.createElement('div');
-  div.setAttribute('data-lang', lang);
-  let file = '';
-  if (lang === 'ru') file = 'components/articles-ru.html';
-  if (lang === 'en') file = 'components/articles-en.html';
-  if (lang === 'ar') file = 'components/articles-ar.html';
-  if (file) {
-    try {
-      const resp = await fetch(file);
-      if (resp.ok) {
-        div.innerHTML = await resp.text(); 
-      } else {
-        div.innerHTML = '<p>Не удалось загрузить статьи</p>';
-      }
-    } catch {
-      div.innerHTML = '<p>Ошибка загрузки статей</p>';
-    }
-    // Вставляем после заголовка
-    const h1 = main.querySelector('h1[data-i18n="main.greeting"]');
-    if (h1 && h1.nextSibling) {
-      main.insertBefore(div, h1.nextSibling);
-    } else {
-      main.appendChild(div);
-    }
-  }
-}
-
-// Инициализация показа статей по языку
-document.addEventListener('DOMContentLoaded', function() {
-  const lang = localStorage.getItem('lang') || 'ru';
-  showArticlesByLang(lang);
-  // Следим за сменой языка
-  const langSelect = document.getElementById('lang-select');
-  if (langSelect) {
-    langSelect.addEventListener('change', e => {
-      showArticlesByLang(e.target.value);
-    });
-  }
-  // На случай смены языка не через select
-  window.showArticlesByLang = showArticlesByLang;
-});
-
-// Переопределяем setLanguage, если он есть
-if (typeof setLanguage === 'function') {
-  const origSetLanguage = setLanguage;
-  window.setLanguage = function(lang) {
-    origSetLanguage(lang);
-    showArticlesByLang(lang);
-  };
-}
 
 // Счетчик с рандомным числом
 function startRandomCounter() {
@@ -69,3 +12,53 @@ function startRandomCounter() {
 }
 
 document.addEventListener('DOMContentLoaded', startRandomCounter);
+
+
+// filepath: /workspaces/tournament-landing/src/components/main-block.html
+// ...existing code...
+
+/**
+ * Таймер обратного отсчёта до заданной даты окончания.
+ * @param {string} selector - CSS-селектор контейнера таймера.
+ * @param {string|Date} endDate - Дата окончания (например, '2025-08-20T18:00:00').
+ */
+function startCountdown(selector, endDate) {
+  const timer = document.querySelector(selector);
+  if (!timer) return;
+
+  function pad(num) {
+    return String(num).padStart(2, '0');
+  }
+
+  function update() {
+    const now = new Date();
+    const end = new Date(endDate);
+    let diff = Math.max(0, end - now);
+
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    diff -= days * (1000 * 60 * 60 * 24);
+    const hours = Math.floor(diff / (1000 * 60 * 60));
+    diff -= hours * (1000 * 60 * 60);
+    const minutes = Math.floor(diff / (1000 * 60));
+    diff -= minutes * (1000 * 60);
+    const seconds = Math.floor(diff / 1000);
+
+    const items = timer.querySelectorAll('.timer__item');
+    if (items.length === 4) {
+      items[0].querySelector('.timer__number').textContent = pad(days);
+      items[1].querySelector('.timer__number').textContent = pad(hours);
+      items[2].querySelector('.timer__number').textContent = pad(minutes);
+      items[3].querySelector('.timer__number').textContent = pad(seconds);
+    }
+
+    if (end - now <= 0) clearInterval(interval);
+  }
+
+  update();
+  const interval = setInterval(update, 1000);
+}
+
+
+document.addEventListener('DOMContentLoaded', function() {
+  startCountdown('.timer', '2025-08-20T18:00:00');
+});

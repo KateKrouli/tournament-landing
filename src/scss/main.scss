@@ -27,7 +27,8 @@ body {
   -webkit-text-size-adjust: none;
   margin: 0;
   overflow-x: hidden;
-  padding-top: 64px; /* Adjusted for header height */
+  padding-top: 60px; /* Adjusted for header height */
+  background: #000;
 }
 
 a {
@@ -72,7 +73,7 @@ p {
 
 .main-width {
   width: 100%;
-  max-width: 1248px;
+  max-width: 1352px;
   padding: 0 16px;
   margin: 0 auto;
 } 

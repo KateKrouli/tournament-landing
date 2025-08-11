@@ -2,7 +2,7 @@ header {
   position: absolute;
   width: 100%;
   top: 0;
-  background: var(--semantic-neutral-50);
+  background: #000;
   transition: background 0.3s ease-in-out;
 
   &.nav-open {
@@ -17,7 +17,8 @@ header {
   .header {
     display: flex;
     align-items: center;
-    height: 64px;
+    gap: 12px;
+    height: 60px;
     position: relative; 
 
     &__nav {
@@ -81,7 +82,7 @@ header {
               color: var(--semantic-neutral-800);
             }
           }
-        }
+        
       }
 
       .btn {
@@ -117,4 +118,40 @@ header {
       }
     }
   }
+
+  
+        &__btn {
+          display: flex;
+          align-items: stretch;
+          height: 43px;
+          position: relative;
+          
+
+          span {
+          background: rgba(20, 160, 255, 0.33);
+          color: var(--semantic-brand-500, #14A0FF);
+          font-size: 16px;
+          font-style: italic;
+          font-weight: 600;
+          border-radius: 0;
+          padding: 0 16px;
+          }
+          
+          &:before {
+            content: '';
+          	display: inline-block;
+            border-bottom: 43px solid rgba(20, 160, 255, 0.33);
+            border-left: 22px solid transparent;
+
+          }
+          &:after {
+            content: '';
+          	display: inline-block;
+            border-top: 43px solid rgba(20, 160, 255, 0.33);
+            border-right: 22px solid transparent;
+
+          }
+        }
+      }
 }
+
