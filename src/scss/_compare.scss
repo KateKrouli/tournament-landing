@@ -1,0 +1,121 @@
+.compare {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: center;
+    text-align: center;
+    gap: 30px;
+    min-height: 100vh; 
+
+
+     @media (max-width: 767px) {
+      height: auto;
+      padding-top: 40px;
+      padding-bottom: 40px;
+     }
+
+
+     &__mathes {
+      display: flex;
+      padding: 40px;
+      justify-content: center;
+      align-items: center;
+      gap: 48px;
+      background: var(--vs, radial-gradient(71.71% 50% at 50% 50%, rgba(20, 160, 255, 0.20) 0%, rgba(20, 160, 255, 0.04) 100%));
+     }
+
+     &__team-logo {
+      display: flex;
+      width: 173px;
+      height: 173px;
+      padding: 20px;
+      align-items: center;
+      justify-content: center;
+      aspect-ratio: 1/1;
+      background: rgba(255, 255, 255, 0.06);
+     }
+
+      &__content {
+         display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+        text-align: center;
+        flex: 1;
+      }
+
+      &__line {
+        display: flex;
+        width: 100%;
+        color: var(--semantic-neutral-0, #FFF);
+        font-size: 24px;
+        font-weight: 500;
+
+        &--fener {
+          text-align: left;
+          border-bottom: 4px solid #FFEC00;
+          flex: 1;
+          padding-bottom: 7px;
+        }
+        &--draws {
+          text-align: center;
+          flex: 1;
+          border-bottom: 4px solid rgba(255, 255, 255, 0.23);
+          padding-bottom: 7px;
+        }
+        &--galata {
+          text-align: right;
+          flex: 1;
+          border-bottom: 4px solid #DF003E;
+          padding-bottom: 7px;
+        }
+      }
+
+      &__prizes {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+
+        >div {
+          display: flex;
+          align-items: center;
+          gap: 22px;
+        }
+      }
+
+      &__prize {
+        display: flex;
+        align-items: flex-end;
+        justify-content: flex-end;
+        width: 58px;
+        height: 58px;
+        background-position: center;
+        background-repeat: no-repeat;
+
+        &--first {
+          background-image: url(images/prize1.webp);
+        }
+        &--second {
+          background-image: url(images/prize2.webp);
+        }
+
+        label {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 32px;
+          height: 32px;
+          flex-shrink: 0;
+          background: var(--semantic-brand-500, #14A0FF);
+          border-radius: 100%;
+          color: #fff;
+          font-style: italic;
+          font-weight: 600;
+          margin-bottom: -3px;
+          margin-right: -3px;
+        }
+      }
+
+}

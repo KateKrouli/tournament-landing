@@ -1,29 +1,60 @@
-<a
-  href="#"
-  class="btn btn--secondary btn--xl btn--arrow"
-  data-i18n="secondary.button"
-  >Bahis Yap</a
->
+ <div class="btn--main">
+               
+                <a href="" class="btn">
+                     <div class="ratio">
+                    <img src="images/Fenerbahce.webp" alt="Fenerbahçe Logo">
+                    <span class="ratio__text">2.15</span>
+                </div>
+                Bet Now
+                <div class="ratio">
+                    <span class="ratio__text">2.90</span>
+                    <img src="images/Galatasaray.webp" alt="Galatasara Logo">
+                </div>
+            </a>
+            </div>
 
 <style>
-  .btn--arrow {
-    width: auto;
-  }
+  .btn--main .btn {
+                border-radius: 0;
+                height: 56px;
+                gap: 20px;
+                padding: 0 12px;
+                font-size: 20px;
+                background: var(--semantic-brand-500, #14A0FF);
+                color: var(--semantic-brand-50);
+            }
+ 
+.btn--main .btn:before {
+            content: '';
+          	display: inline-block;
+            border-bottom: 56px solid var(--semantic-brand-500);
+            border-left: 22px solid transparent;
+                margin-right: -1px;
 
-  @media (max-width: 767px) {
-    .btn--arrow {
-      width: 100%;
-    }
-  }
+          }
+ .btn--main .btn:after {
+            content: '';
+          	display: inline-block;
+            border-top: 56px solid var(--semantic-brand-500);
+            border-right: 22px solid transparent;
+                margin-left: -1px;
 
-  .btn--arrow:after {
-    content: "";
-    display: inline-block;
-    width: 24px;
-    height: 25px;
-    margin-left: 8px;
-    background: url("data:image/svg+xml;utf8,<svg width='24' height='25' viewBox='0 0 24 25' fill='none' xmlns='http://www.w3.org/2000/svg'><rect width='24' height='24' transform='translate(0 0.712891)' fill='white' fill-opacity='0.05'/><rect y='0.712891' width='24' height='24' fill='white' fill-opacity='0.05'/><path d='M10 8.71289L14 12.7129L10 16.7129M22 12.7129C22 18.2357 17.5228 22.7129 12 22.7129C6.47715 22.7129 2 18.2357 2 12.7129C2 7.19004 6.47715 2.71289 12 2.71289C17.5228 2.71289 22 7.19004 22 12.7129Z' stroke='%231086D9' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg>")
-      no-repeat center/contain;
-    vertical-align: middle;
-  }
+          }
+
+.btn--main .btn .ratio {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: rgba(255, 255, 255, 0.60);
+            font-size: 20px;
+            font-style: italic;
+            font-weight: 500;
+            line-height: 24px;
+
+            img {
+                height: 32px;
+            }
+        }
+  
+     
 </style>

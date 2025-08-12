@@ -78,12 +78,15 @@ p {
   margin: 0 auto;
 } 
 
-.h2 {
-  font-weight: 500;
+h2 {
+  font-weight: 700;
   font-size: 3.4vw;
+  font-style: italic;
   line-height: 125%;
-  letter-spacing: -0.04em;
-  color: var(--text-heading-primary);
+  letter-spacing: -2px;
+  color: #FFF;
+  text-transform: uppercase;
+  margin: 0;
 
   @media (min-width: 1440px) { 
     font-size: 48px;
@@ -93,6 +96,10 @@ p {
     font-size: 30px;
     line-height: 127%;
   }
+
+  span {
+    color: #14A0FF;
+  }
 }
 
 @import 'header';
@@ -101,7 +108,7 @@ p {
 
 @import 'main-block';
 
-@import '1xbet';
+@import 'compare';
 
 @import 'players';
 
