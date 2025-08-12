@@ -1,20 +1,57 @@
-<div class="xbet-block main-width">
-    <div class="xbet-block__title h2" data-i18n="xbet.title">Güçlü Markayla Güçlü Ortaklıklar</div>
-    <div class="xbet-block__description" data-i18n="xbet.description">1xBet, dünya çapında tanınan kulüplerin, sporcuların ve teknoloji markalarının güvenilir sponsoru ve iş ortağıdır.</div>
-    <div class="xbet-block__images">
-        <div class="image1"><img src="images/image1.png" alt=""></div>
-        <div class="image2"><img src="images/image2.png" alt=""></div>
-        <div class="image3"><img src="images/image3.png" alt=""></div>
-        <div class="image4"><img src="images/image4.png" alt=""></div>
-        <div class="image5"><img src="images/image5.png" alt=""></div>
-        <div class="image6"><img src="images/image6.png" alt=""></div>
-        <div class="image7"><img src="images/image7.png" alt=""></div>
-    </div>
-    <div class="xbet-block__sponsors">
-        <div class="sponsor1"><img src="images/sponsor1.png" alt=""></div>
-        <div class="sponsor2"><img src="images/sponsor2.png" alt=""></div>
-        <div class="sponsor3"><img src="images/sponsor3.png" alt=""></div>
-        <div class="sponsor4"><img src="images/sponsor4.png" alt=""></div>
-        <div class="sponsor5"><img src="images/sponsor5.png" alt=""></div>
-    </div>
+<div class="compare main-width">
+    <div class="compare__mathes">
+        <div class="compare__team-logo">
+            <img src="images/Fenerbahce.webp" alt="Fenerbahçe Logo" class="compare__team-logo--fener">
+        </div>
+        <div class="compare__content">
+            <h2 class="compare__title"><span>398 matches</span> since 1924</h2>
+            <div class="compare__line">
+                <div class="compare__line--fener" data-count="156">156 win</div>
+                <div class="compare__line--draws" data-count="78">78 draws</div>
+                <div class="compare__line--galata" data-count="164">164 win</div>
+            </div>
+            <div class="compare__prizes">
+                <div class="compare__prizes--fener">
+                    <div class="compare__prize compare__prize--first">
+                        <label>x11</label>
+                    </div>
+                     <div class="compare__prize compare__prize--second">
+                        <label>x11</label>
+                    </div>
+                </div>
+                <div class="compare__prizes--galata">
+                    <div class="compare__prize compare__prize--first">
+                        <label>x11</label>
+                    </div>
+                     <div class="compare__prize compare__prize--second">
+                        <label>x11</label>
+                    </div>
+                </div>
+            </div>
+         </div>
+        <div class="compare__team-logo">
+            <img src="images/Galatasaray.webp" alt="Galatasaray Logo" class="compare__team-logo--galata">
+        </div>  
+     </div>
 </div>
+
+<!-- <script> 
+document.addEventListener('DOMContentLoaded', function() {
+  const line = document.querySelector('.compare__line');
+  if (!line) return;
+  const fener = line.querySelector('.compare__line--fener');
+  const draws = line.querySelector('.compare__line--draws');
+  const galata = line.querySelector('.compare__line--galata');
+
+  const fenerCount = parseInt(fener.dataset.count, 10) || 0;
+  const drawsCount = parseInt(draws.dataset.count, 10) || 0;
+  const galataCount = parseInt(galata.dataset.count, 10) || 0;
+  const total = fenerCount + drawsCount + galataCount;
+
+  if (total > 0) {
+    fener.style.width = (fenerCount / total * 100).toFixed(2) + '%';
+    draws.style.width = (drawsCount / total * 100).toFixed(2) + '%';
+    galata.style.width = (galataCount / total * 100).toFixed(2) + '%';
+  }
+});
+</script> -->

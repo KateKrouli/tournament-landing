@@ -5,7 +5,8 @@
     justify-content: center;
     text-align: center;
     gap: 30px;
-    min-height: 100vh; 
+    padding-top: 80px;
+    padding-bottom: 80px;
 
 
      @media (max-width: 767px) {
@@ -116,6 +117,52 @@
           margin-bottom: -3px;
           margin-right: -3px;
         }
+      }
+
+      &__flip {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        height: 258px;
+        background: var(--vs, radial-gradient(71.71% 50% at 50% 50%, rgba(20, 160, 255, 0.20) 0%, rgba(20, 160, 255, 0.04) 100%));
+      
+        &::before {
+          content: '';
+          position: absolute;
+          left: 0;
+          bottom: 0;
+          height: 288px;
+          width: 1316px;
+          background: url(images/coin-masked-1.webp) left center no-repeat;
+        }
+
+        &::after {
+          content: '';
+          position: absolute;
+          right: 0;
+          bottom: 0;
+          height: 288px;
+          width: 1316px;
+          background: url(images/coin-masked-2.webp) right center no-repeat;
+        }
+      
+      }
+
+      &__flip-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+
+      &__subtitle {
+        color: var(--semantic-neutral-0, #FFF);
+        text-align: center;
+        font-size: 20px;
+        font-weight: 500;
+        opacity: 0.33;
+        margin-bottom: 30px;
       }
 
 }

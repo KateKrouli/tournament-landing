@@ -126,6 +126,16 @@
             visibility: hidden;
          }
     }
+
+    .main-timer {
+         position: absolute;
+    top: 17vw;
+     z-index: 2;
+
+     @media (min-width: 1440px) {
+        top: 190px;
+    }
+    }
 }
 
 .main-timer {
@@ -137,14 +147,7 @@
     gap: 20px;      
     background: var(--vs, radial-gradient(71.71% 50% at 50% 50%, rgba(20, 160, 255, 0.20) 0%, rgba(20, 160, 255, 0.04) 100%));
     backdrop-filter: blur(20px);
-    z-index: 2;
-    position: absolute;
-    top: 17vw;
-
-    @media (min-width: 1440px) {
-        top: 190px;
-    }
-
+   
     &__container {
         display: flex;
         justify-content: center;
