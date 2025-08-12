@@ -4,8 +4,9 @@
     align-items: center;
     justify-content: center;
     gap: 60px;
-    min-height: 100vh;
     overflow: hidden; 
+    padding-top: 80px;
+    padding-bottom: 80px;
 }
 
 .digits-block {
@@ -48,11 +49,11 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
+            justify-content: center; 
             padding: 32px;
             width: calc(33.333% - 4px);
             height: 130px;
-            background: var(--semantic-neutral-50);
+            background: var(--vs, radial-gradient(71.71% 50% at 50% 50%, rgba(20, 160, 255, 0.20) 0%, rgba(20, 160, 255, 0.04) 100%));
 
              @media (max-width: 767px) {
                 height: 96px;

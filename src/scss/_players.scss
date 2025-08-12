@@ -4,7 +4,8 @@
     align-items: center;
     justify-content: center;
     gap: 60px;
-    min-height: 100vh;
+    padding-top: 80px;
+    padding-bottom: 80px;
     overflow: hidden; 
 }
 
@@ -52,7 +53,7 @@
             padding: 32px;
             width: calc(33.333% - 4px);
             height: 130px;
-            background: var(--semantic-neutral-50);
+            background: var(--vs, radial-gradient(71.71% 50% at 50% 50%, rgba(20, 160, 255, 0.20) 0%, rgba(20, 160, 255, 0.04) 100%));
 
              @media (max-width: 767px) {
                 height: 96px;
@@ -72,7 +73,7 @@
             font-size: 2.1vw;
             white-space: nowrap;
             line-height: 127%;
-            color: var(--text-heading-primary);
+            color: #FFF;
 
              @media (max-width: 767px) { 
                 font-size: 18px;
@@ -82,7 +83,8 @@
         &__name {
             font-size: 16px;
             line-height: 150%;
-            color: var(--text-body);
+           color: #FFF;
+           opacity: 0.33;
 
              @media (max-width: 767px) { 
                 font-size: 14px;
@@ -99,7 +101,6 @@
        &__item {
         display: flex;
         align-items: flex-end;
-        border-radius: 32px;
         padding: 8px;
         max-width: 280px;
         height: 348px;
@@ -109,21 +110,20 @@
        &__content {
         display: flex;
         flex-direction: column;
-        align-items: flex-start;
+        align-items: center;
         justify-content: space-between;
-        border-radius: 20px;
-        padding: 12px 16px;
+        padding: 8px;
         width: 100%;
         height: 86px;
-        backdrop-filter: blur(40px);
-        box-shadow: inset 0 0px 0 0 var(--base-white-20);
-        background: var(--base-white-80);
+        background: rgba(0, 19, 37, 0.32);
+        backdrop-filter: blur(20px);
+        gap: 8px
        }
 
        &__info {
         display: flex;
         align-items: center;
-        justify-content: flex-start;
+        justify-content: center;
         gap: 16px;
        }
 
@@ -131,7 +131,7 @@
         font-weight: 500;
         font-size: 20px;
         line-height: 150%;
-        color: var(--base-deep-blue-main);
+        color: var(--base-white, #FFF);
        }
 
        &__count {
@@ -141,34 +141,25 @@
         color: var(--success-500);
        }
 
-       &__flag {
+       &__score {
         display: flex;
         align-items: center;
         justify-content: center;
-        border-radius: 8px;
-        padding: 3px 4px;
-        width: 42px;
-        height: 24px;
-        font-weight: 500;
-        font-size: 12px;
-
-        &--plus {
-            color: var(--success-500);
-            background: var(--success-100);
-        }
-
-        &--minus {
-            color: var(--error-500);
-            background: var(--semantic-error-100);
-        }
+        gap: 20px;
+        font-size: 20px;
+        font-style: italic;
+        font-weight: 600;
+        color:#fff;
        }
-
-       &__game {
+      &__team-logo {
         display: flex;
         align-items: center;
-        gap: 8px;
-        font-weight: 500;
-        color: var(--buttons-link02-fg-button-link02);
-       }
+        justify-content: center;
+        width: 32px;
+        height: 32px;
+        aspect-ratio: 1/1;
+      }
+
+       
     }
 }
