@@ -1,0 +1,39 @@
+<div class="leave-popup" style="display:none;">
+    <div class="leave-popup__image"></div>
+    <div class="leave-popup__content">
+        <h2><span>Wait!</span> The game is just beginning!</h2>
+        <div class="leave-popup__text">
+            1xBet is more than just this match — explore hundreds of games, live events, and special offers now.
+        </div>
+        <div class="btn--main">
+            <a href="" class="btn leave-popup__btn">
+               Explore 1xBe
+            </a>
+        </div>
+    </div>
+</div>
+<div class="leave-overlay" style="display:none;"></div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  let shown = false;
+  function showPopup() {
+    if (shown) return;
+    shown = true;
+    document.querySelector('.leave-popup').style.display = 'block';
+    document.querySelector('.leave-overlay').style.display = 'block';
+  }
+
+  // Показываем попап при попытке уйти с сайта (движение мыши к верхней границе)
+  document.addEventListener('mouseleave', function(e) {
+    if (e.clientY <= 0) showPopup();
+  });
+
+
+  // Закрытие по клику на оверлей
+  document.querySelector('.leave-overlay').addEventListener('click', function() {
+    document.querySelector('.leave-popup').style.display = 'none';
+    document.querySelector('.leave-overlay').style.display = 'none';
+  });
+});
+</script>

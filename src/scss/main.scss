@@ -129,6 +129,7 @@ h2 {
             border-bottom: 56px solid var(--semantic-brand-500);
             border-left: 22px solid transparent;
                 margin-right: -1px;
+                transition: all .3s ease;
 
           }
  .btn--main:after {
@@ -137,6 +138,8 @@ h2 {
             border-top: 56px solid var(--semantic-brand-500);
             border-right: 22px solid transparent;
                 margin-left: -1px;
+                transition: all .3s ease;
+
 
           }
 
@@ -155,6 +158,18 @@ h2 {
             }
         }
   
+.btn--main:hover {
+  .btn {
+     background: var(--semantic-brand-600);
+  }
+
+  &:before {
+    border-bottom: 56px solid var(--semantic-brand-600);
+  }
+    &:after {
+    border-top: 56px solid var(--semantic-brand-600);
+  }
+}
 
 @import 'header';
 
@@ -183,3 +198,7 @@ h2 {
 @import 'partners';
 
 @import 'footer';
+
+@import 'leave-popup';
+
+@import 'flip-popup'; 
