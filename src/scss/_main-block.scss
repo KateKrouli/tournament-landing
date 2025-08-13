@@ -11,6 +11,11 @@
     position: relative;
     background: #000;
 
+    @media (max-width: 767px) { 
+        padding-top: 0;
+        min-height: 200vw;
+    }
+
     &__title {
         display: flex;
         justify-content: center;
@@ -30,11 +35,13 @@
         @media (min-width: 1440px) { 
             font-size: 101px;
         }
-
-         @media (max-width: 767px) {    
-            font-size: 36px;
-            line-height: 122%;
-            letter-spacing: -0.06em;                
+         @media (max-width: 767px) { 
+            position: absolute;   
+            padding: 8px 8px 20px;
+            background: var(--vs, radial-gradient(71.71% 50% at 50% 50%, rgba(20, 160, 255, 0.20) 0%, rgba(20, 160, 255, 0.04) 100%));
+            backdrop-filter: blur(20px);
+            top: 130vw;             
+            z-index: 2; 
          }
 
         span {
@@ -53,13 +60,22 @@
         left: 16px;
         right: 16px;
 
+         @media (max-width: 767px) {
+           bottom: auto;
+           top: 180vw;
+         }
+
         &__list {
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 40px;
+            gap: 2.8vw;
             max-width: 100%;
             width: 100%;
+
+            @media (min-width: 1440px) { 
+                gap: 40px;
+            }
         }
 
         &__item {
@@ -71,6 +87,13 @@
             flex: 1 0 0;
             background: var(--vs, radial-gradient(71.71% 50% at 50% 50%, rgba(20, 160, 255, 0.20) 0%, rgba(20, 160, 255, 0.04) 100%));
             backdrop-filter: blur(20px);
+
+             @media (max-width: 991px) { 
+                &:last-child {
+                    display: none;
+                    width: calc(100% / 2 - 40px);
+                }
+             }
         }
 
         &__logo {
@@ -122,6 +145,12 @@
          @media (min-width: 1440px) {
                 margin-top: -161px;
          }
+
+         @media (max-width: 767px) {
+            background: url(../images/main-banner-mobile.webp) no-repeat top center;
+            background-size: cover;
+            margin-top: 0;
+        }
         img {
             opacity: 0;
             visibility: hidden;
@@ -136,6 +165,10 @@
      @media (min-width: 1440px) {
         top: 190px;
     }
+
+     @media (max-width: 767px) { 
+        top: 140vw; 
+     }
     }
 }
 
@@ -161,11 +194,17 @@
         display: flex;
         width: 140px;
         height: 140px;
-        padding: 20px;
+        padding: 20px; 
         justify-content: center;
         align-items: center;
         aspect-ratio: 1/1;
         background: rgba(255, 255, 255, 0.06);
+
+        @media (max-width: 767px) { 
+            width: 60px;
+            height: 60px;
+            padding: 8px;
+        }
     }
 
     &__timer {
@@ -173,6 +212,7 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        text-align: center;
     }
 
     &__title {
@@ -195,6 +235,10 @@
         align-items: center;
         gap: 8px;
         margin-top: 20px;
+
+         @media (max-width: 767px) {
+            display: none;
+         }
 
         &__item {
             display: flex;
@@ -221,6 +265,7 @@
                 opacity: 0.6;
                 color: #fff;
             }
+    
     }
 
 
@@ -229,12 +274,23 @@
         justify-content: stretch;
         width: 100%;
         font-style: italic;
+
+         @media (max-width: 767px) { 
+            .btn--main .btn .ratio img {
+                display: none;
+            }
+         }
+        
     }
 
     &__btn {
         display: flex;
         align-items: center;
         height: 56px;
+
+        @media (max-width: 767px) { 
+            height: 42px;
+        }
 
         &--second {
 
@@ -250,6 +306,11 @@
                 background: var(--semantic-brand-50);
                 color: var(--semantic-brand-500, #14A0FF);
                 flex: 1;
+
+                @media (max-width: 767px) { 
+                  height: 42px;
+                  font-size: 14px;
+              }
             }
 
             &:before {
@@ -257,7 +318,11 @@
                 display: inline-block;
                 border-bottom: 56px solid var(--semantic-brand-50);
                 border-left: 22px solid transparent;
-                    margin-right: -1px;
+                margin-right: -1px;
+
+                 @media (max-width: 767px) { 
+                  border-bottom: 42px solid var(--semantic-brand-50);
+              }
 
             }
           &:after {
@@ -267,8 +332,11 @@
             border-right: 22px solid transparent;
                 margin-left: -1px;
 
+                 @media (max-width: 767px) { 
+                  border-top: 42px solid var(--semantic-brand-50);
+              }
+
           }
         }
     }
-        
-}  
+}

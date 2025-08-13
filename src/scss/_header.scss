@@ -119,6 +119,7 @@ header {
     }
   }
 
+
   
         &__btn {
           display: flex;
@@ -152,6 +153,27 @@ header {
 
           }
         }
+
+         &__mobile-btn {
+      display: none;
+
+      @media (max-width: 767px) {
+        display: block;
+        width: 36px;
+        height: 36px;
+        background: url('data:image/svg+xml;utf8,<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 12H21M3 6H21M3 18H21" stroke="%2364788C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>') center/24px 24px no-repeat;
+        border: none;
+        background-color: transparent;
+        cursor: pointer;
+        padding: 0;
+        margin-left: auto;
       }
+    }
+    @media (max-width: 767px) {
+      &__mobile-btn.close {
+        background: url('data:image/svg+xml;utf8,<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M19 1L1 19M1 1L19 19" stroke="%23143453" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>') center/24px 24px no-repeat;
+      }
+    }
+  }
 }
 

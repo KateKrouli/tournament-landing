@@ -111,8 +111,12 @@ h2 {
         align-items: center;
         height: 56px;
         width: 100%;
-  }
-  .btn--main .btn {
+
+        @media (max-width: 767px) { 
+          height: 42px;
+        }
+
+  .btn {
                 border-radius: 0;
                 height: 56px;
                 gap: 20px;
@@ -121,9 +125,14 @@ h2 {
                 background: var(--semantic-brand-500, #14A0FF);
                 color: var(--semantic-brand-50);
                 width: 100%;
+
+                @media (max-width: 767px) { 
+                  height: 42px;
+                  font-size: 14px;
+              }
             }
  
-.btn--main:before {
+&:before {
             content: '';
           	display: inline-block;
             border-bottom: 56px solid var(--semantic-brand-500);
@@ -131,8 +140,12 @@ h2 {
                 margin-right: -1px;
                 transition: all .3s ease;
 
+                @media (max-width: 767px) { 
+                  border-bottom: 42px solid var(--semantic-brand-500);
+              }
+
           }
- .btn--main:after {
+&:after {
             content: '';
           	display: inline-block;
             border-top: 56px solid var(--semantic-brand-500);
@@ -140,10 +153,12 @@ h2 {
                 margin-left: -1px;
                 transition: all .3s ease;
 
+           @media (max-width: 767px) { 
+                  border-top: 42px solid var(--semantic-brand-500);
+              }
 
           }
-
-.btn--main .btn .ratio {
+  .btn .ratio {
             display: flex;
             align-items: center;
             gap: 8px;
@@ -157,7 +172,7 @@ h2 {
                 height: 32px;
             }
         }
-  
+      }
 .btn--main:hover {
   .btn {
      background: var(--semantic-brand-600);
