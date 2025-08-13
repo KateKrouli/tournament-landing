@@ -678,10 +678,33 @@ document.addEventListener('DOMContentLoaded', () => {
   </div>
 </div>
 
-      <section class="infographics">
-    <div class="infographics-block main-width">
-        <div class="infographics-block__title">
-            <div data-i18n="infographics.title" class="h2">Hızlı, Kolay, Güvenli — kazanmanız için hazırız</div>
+      
+    <div class="infographics main-width">
+        <h2><span>Security & Payments</span></h2>
+       <div class="infographics__list">
+            <div class="infographics__item">
+                <div class="infographics__image"><img src="images/infographic1.webp" alt=""></div>
+                <div class="infographics__content">
+                    <div class="infographics__item-title">SSL Encryption</div>
+                    <div class="infographics__item-description">All data is secured with 256-bit SSL. Your connection remains private.</div>
+                </div>
+            </div>
+            <div class="infographics__item">
+                <div class="infographics__image"><img src="images/infographic2.webp" alt=""></div>
+                <div class="infographics__content">
+                    <div class="infographics__item-title">Licensed & Regulated</div>
+                    <div class="infographics__item-description">Internationally licensed and audited. We strictly follow KYC and AML rules.</div>
+                </div>
+            </div>
+            <div class="infographics__item">
+                <div class="infographics__image"><img src="images/infographic3.webp" alt=""></div>
+                <div class="infographics__content">
+                    <div class="infographics__item-title" "="">Fast Payouts</div>
+                    <div class="infographics__item-description">Fast, reliable withdrawals to trusted providers.</div>
+                </div>
+            </div>
+        </div>
+         <div style="display: flex; justify-content: center">
              <div class="btn--main">
                
                 <a href="" class="btn">
@@ -698,47 +721,52 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
 
         </div>
-       <div class="infographics-block__list">
-            <div class="infographics-block__item">
-                <img src="images/infographic1.png" alt="">
-                <div class="infographics-block__item-title" data-i18n="infographics.item1">Hızlı</div>
-                <div class="infographics-block__item-description" data-i18n="infographics.desc1">Bahis kuponunuzu 3 tıkta oluşturun. Canlı oranlar milisaniyeler içinde güncellenir; sayfalar < 1 sn’de açılır.</div>
-            </div>
-            <div class="infographics-block__item">
-                <img src="images/infographic2.png" alt="">
-                <div class="infographics-block__item-title" data-i18n="infographics.item2">Kolay</div>
-                <div class="infographics-block__item-description" data-i18n="infographics.desc2">60+ ödeme yöntemi, anında TL yatırma / çekme. Binlerce maç ve marketi akıllı filtrelerle saniyeler içinde bulun.</div>
-            </div>
-            <div class="infographics-block__item">
-                <img src="images/infographic3.png" alt="">
-                <div class="infographics-block__item-title" data-i18n="infographics.item3">Güvenli</div>
-                <div class="infographics-block__item-description" data-i18n="infographics.desc3">Curaçao lisanslı sertifikalı bahis sitesi. 256-bit SSL, bağımsız denetimler ve sorumlu oyun politikasıyla verileriniz </div>
-            </div>
-        </div>
     </div>
-</section>
 
-     <div class="faq-block main-width">
-    <div class="faq-block__info">
-        <div class="faq-block__title h2" data-i18n="faq.title">Frequently asked questions</div>
-        <div class="faq-block__description" data-i18n="faq.description">For any unanswered questions, reach out to our support team via email. We'll respond as soon as possible to assist you.</div>
+     <div class="faq main-width">
+  <div class="faq__info">
+    <h2>Sıkça sorulan sorular</h2>
+    <div class="faq__description">
+      Cevaplanmayan sorularınız için destek ekibimizle e-posta yoluyla iletişime
+      geçin. Size yardımcı olmak için mümkün olan en kısa sürede yanıt
+      vereceğiz.
     </div>
-    <div class="faq-block__list">
-        <div class="faq-block__item">
-            <details>
-                <summary data-i18n="faq.question1">What are your payment methods?</summary>
-                <p data-i18n="faq.answer1">If you created a new account after or while ordering you can edit both addresses (for billing and shipping) in your customer account.</p>
-            </details>
-        </div>
+  </div>
+  <div class="faq__list">
+    <div class="faq__item">
+      <details>
+        <summary>Ödeme yöntemleriniz nelerdir?</summary>
+        <p>
+          Sipariş verdikten sonra veya sipariş verirken yeni bir hesap
+          oluşturduysanız, müşteri hesabınızda her iki adresi (faturalandırma ve
+          gönderim için) de düzenleyebilirsiniz.
+        </p>
+      </details>
     </div>
-</div> 
-     
-      <div class="articles-block main-width">
-  <div class="articles-block__title">
-    <div data-i18n="articles.title" class="h2">
-      Güncel Haberler ve Rehberler
+    <div class="faq__item">
+      <a href=" ">
+        <details>
+          <summary>Bülteninize nereden abone olabilirim?</summary>
+          <p></p>
+        </details>
+      </a>
     </div>
-     <div class="btn--main">
+    <div class="faq__item">
+      <a href=" ">
+        <details>
+          <summary>
+            Bir derginin ücretsiz bir kopyasını örnek olarak sipariş edebilir
+            miyim?
+          </summary>
+          <p></p>
+        </details>
+      </a>
+    </div>
+  </div>
+</div>
+
+   <div class="main-width" style="display: flex; justify-content: center; width: 364px;">
+             <div class="btn--main">
                
                 <a href="" class="btn">
                      <div class="ratio">
@@ -753,10 +781,17 @@ document.addEventListener('DOMContentLoaded', () => {
             </a>
             </div>
 
+        </div> 
+     
+      <div class=" articles main-width">
+  <div class=" articles__title">
+    <h2>
+      Güncel Haberler ve Rehberler
+    </h2>
   </div>
-  <div class="articles-block__list">
+  <div class=" articles__list">
     <div class="article-card article-card--main">
-      <div class="article-card__image" style="background-image: url('images/article1.jpg')"></div>
+      <div class="article-card__image" style="background-image: url('images/article1.webp')"></div>
       <div class="article-card__content">
         <div class="article-card__title" data-i18n="articles.card.title">
           Makale Başlığı
@@ -770,7 +805,7 @@ document.addEventListener('DOMContentLoaded', () => {
       </div>
     </div>
     <div class="article-card article-card">
-      <div class="article-card__image" style="background-image: url('images/article1.jpg')"></div>
+      <div class="article-card__image" style="background-image: url('images/article2.webp')"></div>
       <div class="article-card__content">
         <div class="article-card__title" data-i18n="articles.card.title">
           Makale Başlığı
@@ -782,7 +817,7 @@ document.addEventListener('DOMContentLoaded', () => {
       </div>
     </div>
     <div class="article-card article-card">
-      <div class="article-card__image" style="background-image: url('images/article1.jpg')"></div>
+      <div class="article-card__image" style="background-image: url('images/article3.webp')"></div>
       <div class="article-card__content">
         <div class="article-card__title" data-i18n="articles.card.title">
           Makale Başlığı
@@ -794,25 +829,129 @@ document.addEventListener('DOMContentLoaded', () => {
       </div>
     </div>
   </div>
-  <div class="articles-block__more">
-    <a class="btn btn--m btn--tertiary articles-block__more" href="#" data-i18n="articles.all">View all posts</a>
+    <div style="display: flex; justify-content: center">
+         <div class="btn--main">
+               
+                <a href="" class="btn">
+                     <div class="ratio">
+                    <img src="images/Fenerbahce.webp" alt="Fenerbahçe Logo">
+                    <span class="ratio__text">2.15</span>
+                </div>
+                Bet Now
+                <div class="ratio">
+                    <span class="ratio__text">2.90</span>
+                    <img src="images/Galatasaray.webp" alt="Galatasara Logo">
+                </div>
+            </a>
+            </div>
+
+    </div>
+</div>
+
+      <div class="partners main-width">
+  <h2>Resmi ortaklar</h2>
+  <div class="partners__container">
+    <div class="partners__list swiper">
+      <div class="swiper-wrapper partners-list">
+        <div class="swiper-slide partners-list__item">
+          <img src="images/partnter1.webp">
+        </div>
+        <div class="swiper-slide partners-list__item">
+          <img src="images/partnter2.webp">
+        </div>
+        <div class="swiper-slide partners-list__item">
+          <img src="images/partnter3.webp">
+        </div>
+        <div class="swiper-slide partners-list__item">
+          <img src="images/partnter4.webp">
+        </div>
+        <div class="swiper-slide partners-list__item">
+          <img src="images/partnter5.webp">
+        </div>
+        <div class="swiper-slide partners-list__item">
+          <img src="images/partnter6.webp">
+        </div>
+        <div class="swiper-slide partners-list__item">
+          <img src="images/partnter7.webp">
+        </div>
+        <div class="swiper-slide partners-list__item">
+          <img src="images/partnter8.webp">
+        </div>
+        <div class="swiper-slide partners-list__item">
+          <img src="images/partnter9.webp">
+        </div>
+        <div class="swiper-slide partners-list__item">
+          <img src="images/partnter10.webp">
+        </div>
+        <div class="swiper-slide partners-list__item">
+          <img src="images/partnter11.webp">
+        </div>
+        <div class="swiper-slide partners-list__item">
+          <img src="images/partnter12.webp">
+        </div>
+        <div class="swiper-slide partners-list__item">
+          <img src="images/partnter13.webp">
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
+<script>
+  new Swiper(".partners__list", {
+    slidesPerView: "auto",
+    spaceBetween: 12,
+    freeMode: false,
+    loop: true,
+    autoplay: {
+      delay: 2000,
+      disableOnInteraction: false,
+    },
+    speed: 800,
+    grabCursor: true,
+  });
+</script>
   </main>
 
   <footer>
-    <div class="footer main-width">
-        <nav class="footer__nav">
-            <ul>
-                <li><a href="#" data-i18n="footer.menuPrivacy">Gizlilik Politikası</a></li>
-                <li><a href="#" data-i18n="footer.menuTerms">Kullanım Şartları</a></li>
-                <li><a href="#" data-i18n="footer.menuContact">İletişim</a></li>
-            </ul>
-        </nav>
-        <p data-i18n="footer.copyright">&copy; 2025</p>
+  <div class="footer main-width">
+    <div class="footer__text">
+      Bu web sitesine kaydolmak için, kullanıcının Hizmet Şartlarını kabul
+      etmesi gerekir. Hizmet Şartları güncellenirse, mevcut kullanıcılar,
+      duyurudan en az iki hafta sonra yürürlüğe girecek olan bu güncellemeden
+      önce ürün ve hizmetleri kullanmayı bırakmayı tercih edebilir. İngilizceye
+      ek olarak, kopyalar diğer dillerde de mevcut olabilir. Ancak, orijinal
+      İngilizce sürüm tüm çevirilerin önüne geçer.1x-001.com, Curaçao yasalarına
+      göre kurulan ve Şirket Numarası 163779 olan Caecus N.V. tarafından
+      işletilmektedir. Kayıt adresi: Chuchubiweg, 17, Willemstad, Curaçao.
+      Curaçao Oyun Kontrol Kurulu tarafından, Ulusal Kumar Oyunları Mevzuatına
+      uygun olarak, OGL/2024/1262/0493 lisans numarasıyla şans oyunları sunmak
+      üzere lisanslanmıştır. Lisans 07/11/2024 tarihinde verilmiştir. Ödemeler,
+      Caecus N.V. adına ödeme acenteleri olarak hareket eden Exidea Enterprises
+      LTD ve Ervianassa Enterprises LTD (Kıbrıs) tarafından işlenir. Tüm hakları
+      saklıdır. Oyunlara katılmak için, önce Sorumlu Oyun Anlaşması (RGA) ve
+      Hizmet Şartları (GT&C) ile yasal olarak bağlı kalmayı kabul etmelisiniz.
+      Herhangi bir oyuna katılmadan önce lütfen RGA/GT&C'yi dikkatlice
+      inceleyin.
     </div>
-</footer>  
+    <div class="footer__content">
+      <div class="footer__copyright">
+        Telif Hakkı © 2025 "1xBet".<br>
+        1xBet, size en iyi deneyimi sunmak için çerezleri kullanır. Siteyi
+        kullanmaya devam ederseniz, 1xBet’in çerezleri kullanmasını kabul etmiş
+        olursunuz. <a href="">Daha fazla bilgi edinin</a>
+      </div>
+      <div class="footer__links">
+        <a href="" target="_blank">
+          <img src="images/icon1.png">
+        </a>
+        <a href="">
+          <img src="images/icon2.png">
+        </a>
+      </div>
+    </div>
+  </div>
+</footer> 
   
   <script src="lang.js"></script>
   <script src="main.js"></script>
