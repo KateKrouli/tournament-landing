@@ -60,9 +60,12 @@
         left: 16px;
         right: 16px;
 
-         @media (max-width: 767px) {
+         @media (max-width: 554px) {
            bottom: auto;
-           top: 180vw;
+           top: 190vw;
+           left: 8px;
+            right: 8px;
+            width: auto;
          }
 
         &__list {
@@ -94,6 +97,10 @@
                     width: calc(100% / 2 - 40px);
                 }
              }
+
+              @media (max-width: 554px) { 
+                padding: 4px;
+              }
         }
 
         &__logo {
@@ -106,7 +113,13 @@
             gap: 10px;
             aspect-ratio: 1/1;
             background: rgba(255, 255, 255, 0.06);
-        }
+
+             @media (max-width: 554px) { 
+                width: 36px;
+                height: 36px;
+                padding: 4px;
+                    }
+       }
 
         &__content {
             flex: 1;
@@ -122,6 +135,10 @@
             line-height: 1.3;
             color: var(--semantic-neutral-0);
             text-align: center;
+
+             @media (max-width: 554px) { 
+                font-size: 12px;
+             }
         }
 
         &__score {
@@ -131,6 +148,10 @@
 
             span {
                 color: rgba(20, 160, 255, 0.33);
+            }
+
+            @media (max-width: 767px) {
+                font-size: 18px;
             }
         }
     }
@@ -276,6 +297,9 @@
         font-style: italic;
 
          @media (max-width: 767px) { 
+ 
+            padding: 0 8px;
+
             .btn--main .btn .ratio img {
                 display: none;
             }
