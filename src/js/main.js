@@ -5,7 +5,7 @@ function startRandomCounter() {
   const el = document.getElementById('random-counter');
   if (!el) return;
   function update() {
-    el.textContent = Math.floor(Math.random() * (1600 - 1200 + 1)) + 1200;
+    el.textContent = Math.floor(Math.random() * (22000 - 18000 + 1)) + 18000;
   }
   update();
   setInterval(update, 5000);

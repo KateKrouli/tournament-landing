@@ -13,7 +13,11 @@
 
     @media (max-width: 767px) { 
         padding-top: 0;
-        min-height: 200vw;
+        min-height: 190vw;
+
+         .btn--main .btn .ratio img {
+                display: none;
+            }
     }
 
     &__title {
@@ -48,7 +52,11 @@
             -webkit-text-stroke-width: 2px;
             -webkit-text-stroke-color: var(--semantic-brand-500, #14A0FF);
             background: transparent;
-            color: #000
+            color: #000;
+
+             @media (max-width: 767px) { 
+                -webkit-text-stroke-width: 0.54px;
+             }
         }
     }
 
@@ -56,13 +64,13 @@
         position: absolute;
         bottom: 20px;
         z-index: 2;
-        width: 100%;
         left: 16px;
         right: 16px;
 
+
          @media (max-width: 554px) {
            bottom: auto;
-           top: 190vw;
+           top: 180vw;
            left: 8px;
             right: 8px;
             width: auto;
@@ -202,12 +210,20 @@
     gap: 20px;      
     background: var(--vs, radial-gradient(71.71% 50% at 50% 50%, rgba(20, 160, 255, 0.20) 0%, rgba(20, 160, 255, 0.04) 100%));
     backdrop-filter: blur(20px);
+
+    @media (max-width: 767px) { 
+        padding: 8px;
+    }
    
     &__container {
         display: flex;
         justify-content: center;
         align-items: center;
         gap: 30px;
+
+          @media (max-width: 767px) { 
+            gap: 15px;
+          }
 
     }
 
@@ -240,7 +256,11 @@
        font-size: 28px;
         font-style: normal;
         font-weight: 700; 
-        color: #fff
+        color: #fff;
+
+        @media (max-width: 767px) { 
+            font-size: 20px
+        }
     }
 
     &__subtitle {
@@ -248,6 +268,11 @@
         text-align: center;
         font-size: 16px;
         font-weight: 500;
+
+        @media (max-width: 767px) { 
+            font-size: 14px
+        }
+
     }
 
     .timer {
@@ -299,10 +324,6 @@
          @media (max-width: 767px) { 
  
             padding: 0 8px;
-
-            .btn--main .btn .ratio img {
-                display: none;
-            }
          }
         
     }
@@ -314,6 +335,9 @@
 
         @media (max-width: 767px) { 
             height: 42px;
+            margin-left: -10px;
+            
+
         }
 
         &--second {
@@ -334,6 +358,7 @@
                 @media (max-width: 767px) { 
                   height: 42px;
                   font-size: 14px;
+                  padding: 0;
               }
             }
 

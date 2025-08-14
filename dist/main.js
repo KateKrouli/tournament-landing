@@ -5,7 +5,7 @@
     if (!el)
       return;
     function update() {
-      el.textContent = Math.floor(Math.random() * (1600 - 1200 + 1)) + 1200;
+      el.textContent = Math.floor(Math.random() * (22e3 - 18e3 + 1)) + 18e3;
     }
     update();
     setInterval(update, 5e3);

@@ -19,7 +19,7 @@
         justify-content: center;
         gap: 16px;  
         max-width: 567px;
-        padding: 4vw 0 4vw 4vw;
+        padding: 60px 0 60px 60px;
         
 
             @media (min-width: 1440px) { 
@@ -27,9 +27,10 @@
             }
         @media (max-width: 767px) { 
             max-width: 100%;
-            padding: 32px 24px 0 24px;
-            align-items:center;
-            text-align: center;
+            padding: 20px 4px;
+            align-items:flex-start;
+            text-align: left;
+
         }
     }
 
@@ -127,6 +128,14 @@
             top: auto;
             transform: none;
             text-align: center;
+            height: 245px;
+            width: 100vw;
+            flex: auto;
+            background: url(images/subscribe-bg-mobile.webp) left top no-repeat;
+            background-position: top center;
+            left: auto;
+            margin-left: -16px;
+            margin-right: -16px;
         }
     }
 }

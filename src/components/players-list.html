@@ -10,20 +10,34 @@
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script>
 document.addEventListener('DOMContentLoaded', () => {
-  // Генерация игроков для слайдов
-  const names = [
-    'Player 1', 'Player 2', 'Player 3', 'Player 4', 'Player 5',
-    'Player 6', 'Player 7', 'Player 8', 'Player 9', 'Player 10',
-    'Player 11', 'Player 12', 'Player 13', 'Player 14', 'Player 15',
-    'Player 16', 'Player 17', 'Player 18', 'Player 19', 'Player 20'
-  ];
+  // Данные без повторов
+  const names = ['Mustafa', 'Ahmet', 'Mehmet', 'Ali', 'Hasan', 'Murat'];
   const images = ['images/player1.webp', 'images/player2.webp', 'images/player3.webp', 'images/player4.webp', 'images/player5.webp', 'images/player6.webp'];
   const scores = ['2 - 1', '2 - 2', '0 - 0', '1 - 1', '1 - 2', '2 - 0'];
+
+  // Перемешать массив (Фишер-Йетс)
+  function shuffle(arr) {
+    let a = arr.slice();
+    for (let i = a.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [a[i], a[j]] = [a[j], a[i]];
+    }
+    return a;
+  }
+
+  // Сколько слайдов максимум (по минимальному из массивов)
+  const slidesCount = Math.min(names.length, images.length, scores.length);
+
+  // Перемешиваем массивы
+  const shuffledNames = shuffle(names);
+  const shuffledImages = shuffle(images);
+  const shuffledScores = shuffle(scores);
+
   const slides = [];
-  for (let i = 0; i < 10; i++) {
-    const name = names[Math.floor(Math.random() * names.length)];
-    const bg = images[i % 6];
-    const score = scores[i % 6];
+  for (let i = 0; i < slidesCount; i++) {
+    const name = shuffledNames[i];
+    const bg = shuffledImages[i];
+    const score = shuffledScores[i];
     const count = Math.floor(Math.random() * 201) + 100; // 100-300
     slides.push(`
       <div class="players-list__item swiper-slide" style="background-image: url('${bg}');">
@@ -34,12 +48,12 @@ document.addEventListener('DOMContentLoaded', () => {
           </div>
           <div class="players-list__score">
             <div class="players-list__team-logo">
-                    <img src="images/Fenerbahce.webp" alt="Fenerbahçe Logo" class="matches__logo--fener">
-                </div>
+              <img src="images/Fenerbahce.webp" alt="Fenerbahçe Logo" class="matches__logo--fener">
+            </div>
             ${score}
             <div class="players-list__team-logo">
-               <img src="images/Galatasaray.webp" alt="Galatasaray Logo" class="matches__logo--galata">
-             </div>
+              <img src="images/Galatasaray.webp" alt="Galatasaray Logo" class="matches__logo--galata">
+            </div>
           </div>
         </div>
       </div>
