@@ -1,6 +1,6 @@
-<div class="flip-popup" style="display: none;">
+<div class="flip-popup">
     <div class="flip-popup__content">
-        <h2>Flip for  a Pick</h2>
+        <h2>Bir Seçim İçin Çevirin</h2>
         <div class="flip-popup__image" style="position: relative;">
             <img src="images/flip-image.webp" class="flip-popup__img" style="display: block; position: relative; z-index: 2;">
             <div class="flipping">
@@ -11,16 +11,16 @@
             </div>
         </div>
         <div class="flip-popup__text">
-            Let fate pick your side.
+           Kaderin tarafını seçmesine izin ver.
         </div>
         <div class="btn--main flip-popup__controls">
             <a href="" class="btn flip-popup__btn">
-               Flip
+               Çevir
             </a>
         </div>
     </div>
 </div>
-<div class="flip-overlay" style="display: none;"></div>
+<div class="flip-overlay"></div>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
@@ -37,8 +37,8 @@ document.addEventListener('DOMContentLoaded', function() {
   document.querySelectorAll('.flip-link').forEach(link => {
     link.addEventListener('click', function(e) {
       e.preventDefault();
-      if (popup) popup.style.display = 'block';
-      if (overlay) overlay.style.display = 'block';
+      if (popup) popup.classList.add('active');
+      if (overlay) overlay.classList.add('active');
       // Сбросить состояние попапа
       if (img) {
         img.style.visibility = 'visible';
@@ -63,8 +63,8 @@ document.addEventListener('DOMContentLoaded', function() {
   // Закрытие попапа по клику на оверлей
   if (overlay) {
     overlay.addEventListener('click', function() {
-      if (popup) popup.style.display = 'none';
-      overlay.style.display = 'none';
+      if (popup) popup.classList.remove('active');
+      overlay.classList.remove('active');
     });
   }
 
@@ -81,9 +81,9 @@ document.addEventListener('DOMContentLoaded', function() {
         flipping.style.visibility = 'visible';
         flipping.style.zIndex = '3';
       }
-      if (h2) h2.textContent = 'Flipping...';
-      if (text) text.textContent = 'Wait for it...';
-      btn.textContent = 'The coin is in the air.';
+      if (h2) h2.textContent = 'Dönüyor...';
+      if (text) text.textContent = 'Bekle...';
+      btn.textContent = 'Madeni para havada.';
       btn.setAttribute('disabled', 'disabled');
       btnContainer.classList.add('disabled');
 
@@ -100,11 +100,11 @@ document.addEventListener('DOMContentLoaded', function() {
           flipping.style.visibility = 'hidden';
           flipping.style.zIndex = '1';
         }
-        if (h2) h2.textContent = 'Your Side:';
+        if (h2) h2.textContent = 'Sizin Tarafınız:';
         if (text) {
           text.textContent = isFener
-            ? 'Bet on Fenerbahçe now on our website.'
-            : 'Bet on Galatasaray now on our website.';
+            ? 'Şimdi sitemizden Fenerbahce bahis yapın.'
+            : 'Şimdi sitemizden Galatasaray bahis yapın.';
         }
         btn.textContent = 'Bet Now';
         btn.removeAttribute('disabled');

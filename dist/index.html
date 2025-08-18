@@ -38,13 +38,12 @@
     <div class="header__nav">
       <nav>
         <ul>
-          <li><a href="#" data-i18n="header.menuHome">Главная</a></li>
-          <li><a href="#" data-i18n="header.menuAbout">О нас</a></li>
-          <li><a href="#" data-i18n="header.menuContact">Контакты</a></li>
+          <li><a href="#">Open App</a></li>
+          <li><a href="#" "="">Mirror</a></li>
         </ul>
       </nav>
       
-      <a class="header__btn" href=""><span class="btn">Регистрация / Войти</span></a>
+      <a class="header__btn" href=""><span class="btn">Kayıt / Giriş</span></a>
     </div> 
     <div class="header__mobile-btn"></div>
   </div>
@@ -671,6 +670,7 @@ document.addEventListener('DOMContentLoaded', () => {
       slidesPerGroup: 1,
       spaceBetween: 20,
       loop: enoughSlides,
+      centeredSlides: true,
       autoplay: {
         delay: 3500,
         disableOnInteraction: false,
@@ -682,7 +682,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 </script>
-  <div style="display: flex; justify-content: center">
+  <div style="display: flex; justify-content: center; max-width: 346px; margin: 0 auto;">
      <div class="btn--main">
                
                 <a href="" class="btn">
@@ -1045,7 +1045,7 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 </script> 
-   <div class="flip-popup" style="display: none;">
+   <div class="flip-popup">
     <div class="flip-popup__content">
         <h2>Bir Seçim İçin Çevirin</h2>
         <div class="flip-popup__image" style="position: relative;">
@@ -1067,7 +1067,7 @@ document.addEventListener('DOMContentLoaded', function() {
         </div>
     </div>
 </div>
-<div class="flip-overlay" style="display: none;"></div>
+<div class="flip-overlay"></div>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
@@ -1084,8 +1084,8 @@ document.addEventListener('DOMContentLoaded', function() {
   document.querySelectorAll('.flip-link').forEach(link => {
     link.addEventListener('click', function(e) {
       e.preventDefault();
-      if (popup) popup.style.display = 'block';
-      if (overlay) overlay.style.display = 'block';
+      if (popup) popup.classList.add('active');
+      if (overlay) overlay.classList.add('active');
       // Сбросить состояние попапа
       if (img) {
         img.style.visibility = 'visible';
@@ -1110,8 +1110,8 @@ document.addEventListener('DOMContentLoaded', function() {
   // Закрытие попапа по клику на оверлей
   if (overlay) {
     overlay.addEventListener('click', function() {
-      if (popup) popup.style.display = 'none';
-      overlay.style.display = 'none';
+      if (popup) popup.classList.remove('active');
+      overlay.classList.remove('active');
     });
   }
 

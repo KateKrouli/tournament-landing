@@ -1,4 +1,4 @@
-<div class="flip-popup" style="display: none;">
+<div class="flip-popup">
     <div class="flip-popup__content">
         <h2>Bir Seçim İçin Çevirin</h2>
         <div class="flip-popup__image" style="position: relative;">
@@ -20,7 +20,7 @@
         </div>
     </div>
 </div>
-<div class="flip-overlay" style="display: none;"></div>
+<div class="flip-overlay"></div>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
@@ -37,8 +37,8 @@ document.addEventListener('DOMContentLoaded', function() {
   document.querySelectorAll('.flip-link').forEach(link => {
     link.addEventListener('click', function(e) {
       e.preventDefault();
-      if (popup) popup.style.display = 'block';
-      if (overlay) overlay.style.display = 'block';
+      if (popup) popup.classList.add('active');
+      if (overlay) overlay.classList.add('active');
       // Сбросить состояние попапа
       if (img) {
         img.style.visibility = 'visible';
@@ -63,8 +63,8 @@ document.addEventListener('DOMContentLoaded', function() {
   // Закрытие попапа по клику на оверлей
   if (overlay) {
     overlay.addEventListener('click', function() {
-      if (popup) popup.style.display = 'none';
-      overlay.style.display = 'none';
+      if (popup) popup.classList.remove('active');
+      overlay.classList.remove('active');
     });
   }
 

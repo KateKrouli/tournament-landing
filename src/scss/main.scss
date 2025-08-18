@@ -184,9 +184,15 @@ h2 {
 
   &:before {
     border-bottom: 56px solid var(--semantic-brand-600);
+     @media (max-width: 767px) { 
+                  border-bottom: 42px solid var(--semantic-brand-600);
+              }
   }
     &:after {
     border-top: 56px solid var(--semantic-brand-600);
+     @media (max-width: 767px) { 
+                  border-top: 42px solid var(--semantic-brand-600);
+              }
   }
 }
 

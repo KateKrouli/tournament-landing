@@ -1767,15 +1767,24 @@ h2 span {
 .btn--main:hover:before {
   border-bottom: 56px solid var(--semantic-brand-600);
 }
+@media (max-width: 767px) {
+  .btn--main:hover:before {
+    border-bottom: 42px solid var(--semantic-brand-600);
+  }
+}
 .btn--main:hover:after {
   border-top: 56px solid var(--semantic-brand-600);
+}
+@media (max-width: 767px) {
+  .btn--main:hover:after {
+    border-top: 42px solid var(--semantic-brand-600);
+  }
 }
 
 header {
   position: absolute;
   width: 100%;
   top: 0;
-  background: #000;
   transition: background 0.3s ease-in-out;
 }
 header.nav-open {
@@ -1793,6 +1802,7 @@ header .header {
   gap: 12px;
   height: 60px;
   position: relative;
+  background: #000;
 }
 header .header__nav {
   display: flex;
@@ -3089,7 +3099,7 @@ header .header__mobile-btn {
 .players {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: stretch;
   justify-content: center;
   gap: 60px;
   padding-top: 80px;
@@ -3186,6 +3196,9 @@ header .header__mobile-btn {
   }
 }
 
+.swiper .swiper-wrapper {
+  justify-content: center;
+}
 .swiper .players-list {
   display: flex;
   align-items: stretch;
@@ -3912,6 +3925,13 @@ footer .footer__links {
   max-width: 516px;
   background: var(--vs, radial-gradient(71.71% 50% at 50% 50%, rgba(20, 160, 255, 0.2) 0%, rgba(20, 160, 255, 0.04) 100%));
   text-align: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+.flip-popup.active {
+  opacity: 1;
+  visibility: visible;
 }
 .flip-popup__image {
   width: 100%;
@@ -3957,8 +3977,18 @@ footer .footer__links {
 .flip-popup .btn--main.disabled:before {
   border-bottom: 56px solid var(--semantic-brand-900);
 }
+@media (max-width: 767px) {
+  .flip-popup .btn--main.disabled:before {
+    border-bottom: 42px solid var(--semantic-brand-900);
+  }
+}
 .flip-popup .btn--main.disabled:after {
   border-top: 56px solid var(--semantic-brand-900);
+}
+@media (max-width: 767px) {
+  .flip-popup .btn--main.disabled:after {
+    border-top: 42px solid var(--semantic-brand-900);
+  }
 }
 
 .flip-overlay {
@@ -3970,6 +4000,13 @@ footer .footer__links {
   background: rgba(0, 19, 37, 0.9);
   backdrop-filter: blur(20px);
   z-index: 96;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+.flip-overlay.active {
+  opacity: 1;
+  visibility: visible;
 }
 
 /*# sourceMappingURL=styles.css.map */

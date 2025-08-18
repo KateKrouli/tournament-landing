@@ -8,6 +8,14 @@
     max-width: 516px;
     background: var(--vs, radial-gradient(71.71% 50% at 50% 50%, rgba(20, 160, 255, 0.20) 0%, rgba(20, 160, 255, 0.04) 100%));
     text-align: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: all .3s ease;
+
+    &.active {
+        opacity: 1;
+        visibility: visible;
+    }
 
     &__image {
         width: 100%;
@@ -57,9 +65,15 @@
 
         &:before {
     border-bottom: 56px solid var(--semantic-brand-900);
+    @media (max-width: 767px) { 
+        border-bottom: 42px solid var(--semantic-brand-900);
+    }
   }
     &:after {
     border-top: 56px solid var(--semantic-brand-900);
+    @media (max-width: 767px) { 
+        border-top: 42px solid var(--semantic-brand-900);
+    }
   }
      }
 }
@@ -73,4 +87,12 @@
     background: rgba(0, 19, 37, 0.90);
     backdrop-filter: blur(20px);
     z-index: 96;
+    opacity: 0;
+    visibility: hidden;
+    transition: all .3s ease;
+
+    &.active {
+        opacity: 1;
+        visibility: visible;
+    }
 }
