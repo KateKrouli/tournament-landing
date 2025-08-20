@@ -606,76 +606,63 @@ Mesut Özil
 document.addEventListener('DOMContentLoaded', () => {
   // Данные без повторов
   const names = ['Mustafa', 'Ahmet', 'Mehmet', 'Ali', 'Hasan', 'Murat'];
-  const images = ['images/player1.webp', 'images/player2.webp', 'images/player3.webp', 'images/player4.webp', 'images/player5.webp', 'images/player6.webp'];
+  const images = [
+    'images/player1.webp',
+    'images/player2.webp',
+    'images/player3.webp',
+    'images/player4.webp',
+    'images/player5.webp',
+    'images/player6.webp'
+  ];
   const scores = ['2 - 1', '2 - 2', '0 - 0', '1 - 1', '1 - 2', '2 - 0'];
 
-  // Перемешать массив (Фишер-Йетс)
-  function shuffle(arr) {
-    let a = arr.slice();
-    for (let i = a.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [a[i], a[j]] = [a[j], a[i]];
+  // Формируем массив из 12 слайдов: сначала 1-6, потом 1-6
+  const slidesData = [];
+  for (let repeat = 0; repeat < 2; repeat++) {
+    for (let i = 0; i < 6; i++) {
+      slidesData.push({
+        name: names[i],
+        bg: images[i],
+        score: scores[i],
+        count: Math.floor(Math.random() * 201) + 100 // 100-300
+      });
     }
-    return a;
   }
 
-  // Сколько слайдов максимум (по минимальному из массивов)
-  const slidesCount = Math.min(names.length, images.length, scores.length);
-
-  // Перемешиваем массивы
-  const shuffledNames = shuffle(names);
-  const shuffledImages = shuffle(images);
-  const shuffledScores = shuffle(scores);
-
-  const slides = [];
-  for (let i = 0; i < slidesCount; i++) {
-    const name = shuffledNames[i];
-    const bg = shuffledImages[i];
-    const score = shuffledScores[i];
-    const count = Math.floor(Math.random() * 201) + 100; // 100-300
-    slides.push(`
-      <div class="players-list__item swiper-slide" style="background-image: url('${bg}');">
-        <div class="players-list__content">
-          <div class="players-list__info">
-            <span class="players-list__name">${name}</span>
-            <span class="players-list__count">${count} ₺</span>
+  // Генерируем HTML
+  const slides = slidesData.map(slide => `
+    <div class="players-list__item swiper-slide" style="background-image: url('${slide.bg}');">
+      <div class="players-list__content">
+        <div class="players-list__info">
+          <span class="players-list__name">${slide.name}</span>
+          <span class="players-list__count">${slide.count} ₺</span>
+        </div>
+        <div class="players-list__score">
+          <div class="players-list__team-logo">
+            <img src="images/Fenerbahce.webp" alt="Fenerbahçe Logo" class="matches__logo--fener">
           </div>
-          <div class="players-list__score">
-            <div class="players-list__team-logo">
-              <img src="images/Fenerbahce.webp" alt="Fenerbahçe Logo" class="matches__logo--fener">
-            </div>
-            ${score}
-            <div class="players-list__team-logo">
-              <img src="images/Galatasaray.webp" alt="Galatasaray Logo" class="matches__logo--galata">
-            </div>
+          ${slide.score}
+          <div class="players-list__team-logo">
+            <img src="images/Galatasaray.webp" alt="Galatasaray Logo" class="matches__logo--galata">
           </div>
         </div>
       </div>
-    `);
-  }
+    </div>
+  `);
+
   const wrapper = document.querySelector('.players-slider .swiper-wrapper');
   if (wrapper) {
     wrapper.innerHTML = slides.join('');
-    // Определяем сколько слайдов реально помещается в контейнере
-    const container = document.querySelector('.players-slider');
-    let visibleSlides = 1;
-    if (container) {
-      const containerWidth = container.offsetWidth;
-      visibleSlides = Math.floor(containerWidth / 280);
-    }
-    // loop и centeredSlides — только если слайдов больше, чем помещается на экране
-    const enoughSlides = slides.length > visibleSlides;
     const swiper = new Swiper('.players-slider', {
       slidesPerView: 'auto',
       slidesPerGroup: 1,
       spaceBetween: 20,
-      loop: enoughSlides,
+      loop: true,
       centeredSlides: true,
       autoplay: {
         delay: 3500,
         disableOnInteraction: false,
       },
-      centeredSlides: enoughSlides,
       speed: 500,
     });
     swiper.update();
@@ -1050,11 +1037,10 @@ document.addEventListener('DOMContentLoaded', function() {
         <h2>Bir Seçim İçin Çevirin</h2>
         <div class="flip-popup__image" style="position: relative;">
             <img src="images/flip-image.webp" class="flip-popup__img" style="display: block; position: relative; z-index: 2;">
+             <img src="" class="flip-popup__result-img" style="display: none; position: relative; z-index: 2;">
             <div class="flipping">
-                <script type="module" src="https://unpkg.com/@splinetool/viewer@1.10.42/build/spline-viewer.js" async=""></script>
-                <spline-viewer loading-anim-type="spinner-small-dark" url="https://prod.spline.design/9qNTa82fDpZlNzSk/scene.splinecode">
-                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAATCAYAAADxlA/3AAAJ+ElEQVR4AQCBAH7/AGltbwBpbW8AaW1vAGltbwBpbW8AaW1vAGltbwBpbW8AaW1vAGltbwBpbW8AaW1vAGltbwBpbW8AaW1vAGltbwBpbW8AaW1vAGltbwBpbW8AaW1vAGltbwBpbW8AaW1vAGltbwBpbW8AaW1vAGltbwBpbW8AaW1vAGltbwAAgQB+/wBpbW8AaW1vAGltbwBpbW8AaW1vAGltbwBpbW8AaW1vAGltbwBpbW8AaW1vAGltbwBpbW8AaW1vAGltbwBpbW8AaW1vAGltbwBpbW8AaW1vAGltbwBpbW8AaW1vAGltbwBpbW8AaW1vAGltbwBpbW8AaW1vAACBAH7/AGltbwBpbW8AaW1vAGltbwBpbW8AaW1vAGltbwBpbW8AaW1vAGltbwBpbW8AaW1vAGltbwBpbW8AaW1vAGltbwBpbW8AaW1vAGltbwBpbW8AaW1vAGltbwBpbW8AaW1vAGltbwBpbW8AaW1vAGltbwBpbW8AaW1vAGltbwAAgQB+/wBpbW8AaW1vAGltbwBpbW8AaW1vAGltbwBpbW8AaW1vAGltbwBpbW8AaW1vAGltbwBpbW8AaW1vAGltbwBpbW8AaW1vAGltbwBpbW8AaW1vAGltbwBpbW8AaW1vAGltbwBpbW8AaW1vAGltbwBpbW8AaW1vAGltbwBpbW8AAIEAfv8AaW1vAGltbwBpbW8AaW1vAGltbwBpbW8AaW1vAGltbwBpbW8AaW1vAGltbwBpbW8AaW1vAGltbwBpbW8AaW1vAGltbwBpbW8AaW1vAGltbwBpbW8AaW1vAGltbwBpbW8AaW1vAGltbwBpbW8AaW1vAGltbwBpbW8AaW1vAACBAH7/AGltbwBpbW8AaW1vAGltbwBpbW8AaW1vAGltbwBpbW8AaW1vAGltbwBpbW8AaW1vAGltbwBpbW8AaW1vAGltbwBpbW8AaW1vAGltbwBpbW8AaW1vAGltbwBpbW8AaW1vAGltbwBpbW8AaW1vAGltbwBpbW8AaW1vAGltbwBpbW8AAIEAfv8AaW1vAGltbwBpbW8AaW1vAGltbwBpbW8AaW1vAGltbwBpbW8AaW1vAGltbwBpbW8AaW1vAGltbwBpbW8AaW1vAGltbwBpbW8AaW1vAGltbwBpbW8AaW1vAGltbwBpbW8AaW1vAGltbwBpbW8AaW1vAGltbwBpbW8AaW1vAGltbwAAgQB+/wBpbW8AaW1vAGltbwBpbW8AaW1vAGltbwBpbW8AaW1vAGltbwBpbW8AaW1vAGltbwBpbW8AaW1vAGltbwBpbW8AaW1vAGltbwBpbW8AaW1vAGltbwBpbW8AaW1vAGltbwBpbW8AaW1vAGltbwBpbW8AaW1vAGltbwBpbW8AaW1vAACBAH7/AGltbwBpbW8AaW1vAGltbwBpbW8AaW1vAGltbwBpbW8AaW1vAGltbwBpbW8AaW1vAGltbwBpbW8AaW1vAGltbwBpbW8AaW1vAGltbwBpbW8AaW1vAGltbwBpbW8AaW1vAGltbwBpbW8AaW1vAGltbwBpbW8AaW1vAGltbwBpbW8AAIEAfv8AaW1vAGltbwBpbW8AaW1vAGltbwBpbW8AaW1vAGltbwBpbW8AaW1vAGltbwBpbW8AaW1vAGltbwBpbW8AaW1vAGltbwBpbW8AaW1vAGltbwBpbW8AaW1vAGltbwBpbW8AaW1vAGltbwBpbW8AaW1vAGltbwBpbW8AaW1vAGltbwAAgQB+/wBpbW8AaW1vAGltbwBpbW8AaW1vAGltbwBpbW8AaW1vAGltbwBpbW8AaW1vAGltbwBpbW8AaW1vAGltbwBpbW8AaW1vAGltbwBpbW8AaW1vAGltbwBpbW8AaW1vAGltbwBpbW8AaW1vAGltbwBpbW8AaW1vAGltbwBpbW8AaW1vAACBAH7/AGltbwBpbW8AaW1vAGltbwBpbW8AaW1vAGltbwBpbW8AaW1vAGltbwBpbW8AaW1vAGltbwBpbW8AaW1vAGltbwBpbW8AaW1vAGltbwBpbW8AaW1vAGltbwBpbW8AaW1vAGltbwBpbW8AaW1vAGltbwBpbW8AaW1vAGltbwBpbW8AAIEAfv8AaW1vAGltbwBpbW8AaW1vAGltbwBpbW8AaW1vAGltbwBpbW8AaW1vAGltbwBpbW8AaW1vAGltbwBpbW8AaW1vAGltbwBpbW8AaW1vAGltbwBpbW8AaW1vAGltbwBpbW8AaW1vAGltbwBpbW8AaW1vAGltbwBpbW8AaW1vAAGBAH7/AGltbwBpbW8AaW1vAGltbwBpbW8AaW1vAGltbwBpbW8AaW1vAGltbwBpbW8AaW1vAGltbwBpbW8AaW1vAGltbwBpbW8AaW1vAGltbwBpbW8AaW1vAGltbwBpbW8AaW1vAGltbwBpbW8AaW1vAGltbwBpbW8AaW1vAGltbwBpbW8AYrIEDg8IZkAAAAAASUVORK5CYII=" alt="Spline preview" style="width: 100%; height: 100%;">
-                </spline-viewer>
+             <script type="module" src="https://unpkg.com/@splinetool/viewer@1.10.48/build/spline-viewer.js" async=""></script>
+<spline-viewer style="width: 256px" loading-anim-type="spinner-small-dark" url="https://prod.spline.design/9qNTa82fDpZlNzSk/scene.splinecode"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAQxklEQVR4AQCBAH7/AGFlZwNhZWcAYWVnAGFlZwBhZWcAYWVnAGFlZwBhZWcAYWVnAGFlZwBhZWcAYWVnBWFlZxRhZWciYWVnLGFlZzBhZWcvYWVnKGFlZxxhZWcNYWVnAGFlZwBhZWcAYWVnAGFlZwBhZWcAYWVnAGFlZwBhZWcAYWVnAGFlZwdhZWcLAIEAfv8AYWVnBGFlZwBhZWcAYWVnAGFlZwBhZWcAYWVnAGFlZwBhZWcAYWVnAGFlZwBhZWcHYWVnF2FlZyRhZWcuYWVnM2FlZzFhZWcqYWVnHmFlZw9hZWcAYWVnAGFlZwBhZWcAYWVnAGFlZwBhZWcAYWVnAGFlZwBhZWcAYWVnCGFlZwwAgQB+/wBhZWcHYWVnA2FlZwBhZWcAYWVnAGFlZwBhZWcAYWVnAGFlZwBhZWcAYWVnAGFlZwthZWcbYWVnKWFlZzNhZWc3YWVnNmFlZy9hZWcjYWVnE2FlZwJhZWcAYWVnAGFlZwBhZWcAYWVnAGFlZwBhZWcAYWVnAGFlZwFhZWcKYWVnDgCBAH7/AGFlZwthZWcHYWVnAGFlZwBhZWcAYWVnAGFlZwBhZWcAYWVnAGFlZwBhZWcBYWVnEWFlZyFhZWcvYWVnOWFlZz5hZWc8YWVnNWFlZylhZWcZYWVnB2FlZwBhZWcAYWVnAGFlZwBhZWcAYWVnAGFlZwBhZWcAYWVnBGFlZwxhZWcQAIEAfv8AYWVnD2FlZwthZWcEYWVnAGFlZwBhZWcAYWVnAGFlZwBhZWcAYWVnAGFlZwhhZWcYYWVnKGFlZzdhZWdBYWVnRWFlZ0RhZWc8YWVnMGFlZx9hZWcOYWVnAGFlZwBhZWcAYWVnAGFlZwBhZWcAYWVnAGFlZwBhZWcGYWVnDmFlZxMAgQB+/wBhZWcTYWVnD2FlZwlhZWcAYWVnAGFlZwBhZWcAYWVnAGFlZwBhZWcBYWVnD2FlZyBhZWcwYWVnPmFlZ0lhZWdNYWVnTGFlZ0RhZWc3YWVnJ2FlZxVhZWcEYWVnAGFlZwBhZWcAYWVnAGFlZwBhZWcAYWVnAGFlZwlhZWcQYWVnFQCBAH7/AGFlZxdhZWcTYWVnDWFlZwRhZWcAYWVnAGFlZwBhZWcAYWVnAGFlZwdhZWcWYWVnJ2FlZzhhZWdGYWVnUWFlZ1VhZWdUYWVnTGFlZz9hZWcuYWVnHGFlZwphZWcAYWVnAGFlZwBhZWcAYWVnAGFlZwBhZWcBYWVnCmFlZxJhZWcWAIEAfv8AYWVnGWFlZxZhZWcPYWVnCGFlZwBhZWcAYWVnAGFlZwBhZWcBYWVnDWFlZxxhZWcuYWVnP2FlZ05hZWdYYWVnXWFlZ1thZWdTYWVnRmFlZzVhZWciYWVnD2FlZwBhZWcAYWVnAGFlZwBhZWcAYWVnAGFlZwJhZWcLYWVnE2FlZxcAgQB+/wBhZWcbYWVnF2FlZxFhZWcKYWVnAmFlZwBhZWcAYWVnAGFlZwVhZWcSYWVnIWFlZzNhZWdFYWVnVGFlZ15hZWdjYWVnYWFlZ1lhZWdMYWVnOmFlZydhZWcUYWVnBGFlZwBhZWcAYWVnAGFlZwBhZWcAYWVnAmFlZwthZWcTYWVnFgCBAH7/AGFlZxthZWcXYWVnEWFlZwphZWcDYWVnAGFlZwBhZWcAYWVnCGFlZxVhZWclYWVnN2FlZ0lhZWdYYWVnY2FlZ2hhZWdnYWVnXmFlZ1BhZWc/YWVnK2FlZxdhZWcGYWVnAGFlZwBhZWcAYWVnAGFlZwBhZWcCYWVnCmFlZxFhZWcVAIEAfv8AYWVnGWFlZxZhZWcQYWVnCWFlZwNhZWcAYWVnAGFlZwFhZWcJYWVnF2FlZydhZWc6YWVnTGFlZ1xhZWdnYWVnbGFlZ2phZWdiYWVnVGFlZ0JhZWctYWVnGWFlZwhhZWcAYWVnAGFlZwBhZWcAYWVnAGFlZwBhZWcIYWVnD2FlZxMAgQB+/wBhZWcXYWVnFGFlZw9hZWcIYWVnAWFlZwBhZWcAYWVnAGFlZwlhZWcXYWVnKGFlZzthZWdOYWVnXmFlZ2lhZWduYWVnbGFlZ2RhZWdWYWVnQ2FlZy9hZWcbYWVnCWFlZwBhZWcAYWVnAGFlZwBhZWcAYWVnAGFlZwZhZWcMYWVnEACBAH7/AGFlZxRhZWcRYWVnDGFlZwVhZWcAYWVnAGFlZwBhZWcAYWVnCGFlZxZhZWcoYWVnO2FlZ05hZWdeYWVnamFlZ29hZWduYWVnZWFlZ1dhZWdEYWVnMGFlZxthZWcJYWVnAGFlZwBhZWcAYWVnAGFlZwBhZWcAYWVnA2FlZwlhZWcNAIEAfv8AYWVnEWFlZw5hZWcJYWVnAmFlZwBhZWcAYWVnAGFlZwBhZWcHYWVnFWFlZydhZWc6YWVnTWFlZ15hZWdqYWVnb2FlZ25hZWdlYWVnV2FlZ0RhZWcwYWVnG2FlZwhhZWcAYWVnAGFlZwBhZWcAYWVnAGFlZwBhZWcBYWVnB2FlZwoAgQB+/wBhZWcPYWVnDGFlZwZhZWcAYWVnAGFlZwBhZWcAYWVnAGFlZwVhZWcTYWVnJWFlZzlhZWdMYWVnXWFlZ2lhZWdvYWVnbWFlZ2VhZWdXYWVnRGFlZy9hZWcaYWVnCGFlZwBhZWcAYWVnAGFlZwBhZWcAYWVnAGFlZwBhZWcFYWVnCACBAH7/AGFlZwxhZWcJYWVnBGFlZwBhZWcAYWVnAGFlZwBhZWcAYWVnA2FlZxFhZWckYWVnOGFlZ0thZWdcYWVnaGFlZ25hZWdsYWVnZGFlZ1ZhZWdEYWVnL2FlZxphZWcHYWVnAGFlZwBhZWcAYWVnAGFlZwBhZWcAYWVnAGFlZwRhZWcHAIEAfv8AYWVnC2FlZwhhZWcDYWVnAGFlZwBhZWcAYWVnAGFlZwBhZWcBYWVnEGFlZyJhZWc2YWVnSWFlZ1phZWdnYWVnbGFlZ2thZWdjYWVnVWFlZ0NhZWcuYWVnGWFlZwdhZWcAYWVnAGFlZwBhZWcAYWVnAGFlZwBhZWcAYWVnBGFlZwcAgQB+/wBhZWcLYWVnCGFlZwJhZWcAYWVnAGFlZwBhZWcAYWVnAGFlZwBhZWcOYWVnIGFlZzRhZWdIYWVnWWFlZ2VhZWdrYWVnamFlZ2JhZWdVYWVnQmFlZy5hZWcZYWVnB2FlZwBhZWcAYWVnAGFlZwBhZWcAYWVnAGFlZwBhZWcFYWVnCACBAH7/AGFlZwthZWcIYWVnA2FlZwBhZWcAYWVnAGFlZwBhZWcAYWVnAGFlZw1hZWcfYWVnM2FlZ0ZhZWdXYWVnY2FlZ2phZWdpYWVnYWFlZ1RhZWdCYWVnLmFlZxlhZWcHYWVnAGFlZwBhZWcAYWVnAGFlZwBhZWcAYWVnAWFlZwdhZWcKAIEAfv8AYWVnDWFlZwlhZWcEYWVnAGFlZwBhZWcAYWVnAGFlZwBhZWcAYWVnDGFlZx1hZWcxYWVnRGFlZ1VhZWdhYWVnaGFlZ2dhZWdgYWVnUmFlZ0FhZWctYWVnGWFlZwdhZWcAYWVnAGFlZwBhZWcAYWVnAGFlZwBhZWcDYWVnCmFlZw0AgQB+/wBhZWcOYWVnC2FlZwVhZWcAYWVnAGFlZwBhZWcAYWVnAGFlZwBhZWcLYWVnHGFlZy9hZWdCYWVnU2FlZ19hZWdlYWVnZWFlZ15hZWdRYWVnP2FlZyxhZWcZYWVnB2FlZwBhZWcAYWVnAGFlZwBhZWcAYWVnAGFlZwZhZWcMYWVnEACBAH7/AGFlZxBhZWcNYWVnB2FlZwBhZWcAYWVnAGFlZwBhZWcAYWVnAGFlZwlhZWcZYWVnLGFlZz9hZWdPYWVnXGFlZ2JhZWdiYWVnW2FlZ05hZWc9YWVnKmFlZxdhZWcHYWVnAGFlZwBhZWcAYWVnAGFlZwBhZWcAYWVnCWFlZw9hZWcTAIEAfv8AYWVnEmFlZw9hZWcIYWVnAGFlZwBhZWcAYWVnAGFlZwBhZWcAYWVnBmFlZxdhZWcpYWVnO2FlZ0xhZWdYYWVnXmFlZ15hZWdXYWVnS2FlZzphZWcoYWVnFWFlZwVhZWcAYWVnAGFlZwBhZWcAYWVnAGFlZwJhZWcLYWVnEWFlZxUAgQB+/wBhZWcTYWVnEGFlZwlhZWcBYWVnAGFlZwBhZWcAYWVnAGFlZwBhZWcDYWVnE2FlZyVhZWc3YWVnR2FlZ1JhZWdZYWVnWWFlZ1JhZWdGYWVnNmFlZyRhZWcSYWVnA2FlZwBhZWcAYWVnAGFlZwBhZWcAYWVnA2FlZwxhZWcTYWVnFgCBAH7/AGFlZxRhZWcQYWVnCWFlZwBhZWcAYWVnAGFlZwBhZWcAYWVnAGFlZwBhZWcOYWVnIGFlZzFhZWdBYWVnTGFlZ1NhZWdTYWVnTGFlZ0BhZWcxYWVnH2FlZw5hZWcAYWVnAGFlZwBhZWcAYWVnAGFlZwBhZWcDYWVnDGFlZxNhZWcXAIEAfv8AYWVnE2FlZw9hZWcIYWVnAGFlZwBhZWcAYWVnAGFlZwBhZWcAYWVnAGFlZwlhZWcaYWVnK2FlZzphZWdGYWVnTGFlZ0xhZWdGYWVnOmFlZythZWcaYWVnCWFlZwBhZWcAYWVnAGFlZwBhZWcAYWVnAGFlZwFhZWcLYWVnEmFlZxYAgQB+/wBhZWcSYWVnDmFlZwdhZWcAYWVnAGFlZwBhZWcAYWVnAGFlZwBhZWcAYWVnA2FlZxRhZWckYWVnM2FlZz9hZWdFYWVnRWFlZz9hZWczYWVnJGFlZxRhZWcEYWVnAGFlZwBhZWcAYWVnAGFlZwBhZWcAYWVnAGFlZwlhZWcRYWVnFQCBAH7/AGFlZxFhZWcNYWVnBWFlZwBhZWcAYWVnAGFlZwBhZWcAYWVnAGFlZwBhZWcAYWVnDWFlZx5hZWcsYWVnN2FlZz1hZWc9YWVnN2FlZyxhZWceYWVnDmFlZwBhZWcAYWVnAGFlZwBhZWcAYWVnAGFlZwBhZWcAYWVnB2FlZw5hZWcTAIEAfv8AYWVnD2FlZwthZWcDYWVnAGFlZwBhZWcAYWVnAGFlZwBhZWcAYWVnAGFlZwBhZWcIYWVnGGFlZyZhZWcxYWVnN2FlZzdhZWcxYWVnJmFlZxhhZWcIYWVnAGFlZwBhZWcAYWVnAGFlZwBhZWcAYWVnAGFlZwBhZWcEYWVnDGFlZxAAgQB+/wBhZWcOYWVnCWFlZwFhZWcAYWVnAGFlZwBhZWcAYWVnAGFlZwBhZWcAYWVnAGFlZwNhZWcTYWVnIWFlZyxhZWcxYWVnMWFlZyxhZWchYWVnE2FlZwNhZWcAYWVnAGFlZwBhZWcAYWVnAGFlZwBhZWcAYWVnAGFlZwJhZWcKYWVnDgCBAH7/AGFlZwxhZWcIYWVnAGFlZwBhZWcAYWVnAGFlZwBhZWcAYWVnAGFlZwBhZWcAYWVnAGFlZw9hZWcdYWVnKGFlZy1hZWctYWVnKGFlZx1hZWcPYWVnAGFlZwBhZWcAYWVnAGFlZwBhZWcAYWVnAGFlZwBhZWcAYWVnAGFlZwhhZWcMAYEAfv8AYWVnC2FlZwdhZWcAYWVnAGFlZwBhZWcAYWVnAGFlZwBhZWcAYWVnAGFlZwBhZWcAYWVnDWFlZxthZWcmYWVnK2FlZythZWcmYWVnG2FlZw1hZWcAYWVnAGFlZwBhZWcAYWVnAGFlZwBhZWcAYWVnAGFlZwBhZWcAYWVnB2FlZwzaEA/mDcLfCgAAAABJRU5ErkJggg==" alt="Spline preview" style="width: 100%; height: 100%;"></spline-viewer>
             </div>
         </div>
         <div class="flip-popup__text">
@@ -1074,6 +1060,7 @@ document.addEventListener('DOMContentLoaded', function() {
   const btnContainer = document.querySelector('.flip-popup__controls');
   const btn = document.querySelector('.flip-popup__btn');
   const img = document.querySelector('.flip-popup__img');
+  const imgResult = document.querySelector('.flip-popup__result-img');
   const flipping = document.querySelector('.flipping');
   const h2 = document.querySelector('.flip-popup__content h2');
   const text = document.querySelector('.flip-popup__text');
@@ -1088,9 +1075,17 @@ document.addEventListener('DOMContentLoaded', function() {
       if (overlay) overlay.classList.add('active');
       // Сбросить состояние попапа
       if (img) {
+        img.src = 'images/flip-image.webp';
         img.style.visibility = 'visible';
         img.style.opacity = '1';
+        img.style.display = 'block';
       }
+      if (imgResult) { 
+        imgResult.style.display = 'none';
+        imgResult.src = '';
+      }
+      if (popup) popup.classList.remove('finished');
+
       if (flipping) {
         flipping.style.opacity = '0';
         flipping.style.visibility = 'hidden';
@@ -1123,6 +1118,7 @@ document.addEventListener('DOMContentLoaded', function() {
       // Скрыть картинку, показать flipping, изменить тексты и заблокировать кнопку
       if (img) img.style.visibility = 'hidden';
       if (img) img.style.opacity = '0';
+      if (img) img.style.display = 'none';
       if (flipping) {
         flipping.style.opacity = '1';
         flipping.style.visibility = 'visible';
@@ -1138,9 +1134,9 @@ document.addEventListener('DOMContentLoaded', function() {
       setTimeout(function() {
         // Рандомно выбрать сторону
         const isFener = Math.random() < 0.5;
-        if (img) {
-          img.style.visibility = 'visible';
-          img.style.opacity = '1';
+        if (imgResult) {
+          imgResult.src = isFener ? 'images/coin-fener.webp' : 'images/coin-galat.webp';
+          imgResult.style.display = 'block';
         }
         if (flipping) {
           flipping.style.opacity = '0';
@@ -1157,11 +1153,12 @@ document.addEventListener('DOMContentLoaded', function() {
         btn.removeAttribute('disabled');
         btn.setAttribute('href', 'https://1xbet.com/tr');
         btnContainer.classList.remove('disabled');
-      }, 3000);
+        popup.classList.add('finished');
+      }, 10000);
     });
   }
 });
-</script> 
+  </script> 
     <div class="cta flip-link">
     <div class="cta__image">
         <img src="images/cta.webp">

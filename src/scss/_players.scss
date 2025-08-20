@@ -102,7 +102,7 @@
 .swiper {
 
     .swiper-wrapper {
-        justify-content: center;
+       
     }
 
 .players-list {
@@ -114,6 +114,7 @@
         display: flex;
         align-items: flex-end;
         padding: 8px;
+        width: 280px !important;
         max-width: 280px;
         height: 348px;
         background-size: cover;
