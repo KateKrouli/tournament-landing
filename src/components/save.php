@@ -1,7 +1,7 @@
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // куда отправляем письма
-    $to = "yourmail@example.com";  
+    $to = "opoloos123@gmail.com";  
 
     // тема письма
     $subject = "Новая подписка на рассылку";  
@@ -13,7 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $body = "Подписка на рассылку с сайта.\nEmail: $email";
 
     // заголовки письма
-    $headers = "From: no-reply@yourdomain.com\r\n"; 
+    $headers = "From: no-reply@galatasarayvefenerbahce.bet\r\n"; 
     $headers .= "Reply-To: $email\r\n"; 
 
     // отправка

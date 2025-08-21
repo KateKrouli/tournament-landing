@@ -1,12 +1,26 @@
 <?php
-if ($_SERVER["REQUEST_METHOD"] === "POST" && !empty($_POST["email"])) {
-  $email = filter_var($_POST["email"], FILTER_SANITIZE_EMAIL);
-  $file = fopen("emails.txt", "a");
-  fwrite($file, $email . PHP_EOL);
-  fclose($file);
-  echo "Email saved successfully!";
-} else {
-  http_response_code(400);
-  echo "Invalid request";
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // куда отправляем письма
+    $to = "opoloos123@gmail.com";  
+
+    // тема письма
+    $subject = "Новая подписка на рассылку";  
+
+    // получаем данные из формы
+    $email = htmlspecialchars($_POST['email']);  
+
+    // формируем тело письма
+    $body = "Подписка на рассылку с сайта.\nEmail: $email";
+
+    // заголовки письма
+    $headers = "From: no-reply@galatasarayvefenerbahce.bet\r\n"; 
+    $headers .= "Reply-To: $email\r\n"; 
+
+    // отправка
+    if (mail($to, $subject, $body, $headers)) {
+        echo "✅ Teşekkürler! Abone oldunuz.";
+    } else {
+        echo "❌ Gönderim hatası.";
+    }
 }
 ?>

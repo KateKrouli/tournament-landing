@@ -43,6 +43,75 @@
     const interval = setInterval(update, 1e3);
   }
   document.addEventListener("DOMContentLoaded", function() {
-    startCountdown(".timer", "2025-08-20T18:00:00");
+    startCountdown(".timer", "2025-08-30T18:00:00");
+  });
+  var dateStrings = [
+    "23.08 20.30",
+    "24.08 20.30",
+    "27.08 21.00",
+    "30.08 20.30",
+    "31.08 19.00",
+    "18.00 19.00",
+    "14.09 19.00",
+    "21.09 19.00",
+    "28.09 19.00",
+    "05.10 19.00",
+    "19.10 19.00",
+    "26.10 19.00",
+    "02.11 19.00",
+    "09.11 19.00",
+    "23.11 19.00",
+    "30.11 19.00",
+    "07.12 19.00",
+    "14.12 19.00",
+    "21.12 19.00",
+    "18.01 19.00",
+    "25.01 19.00",
+    "01.02 19.00",
+    "08.02 19.00",
+    "15.02 19.00",
+    "22.02 19.00",
+    "01.03 19.00",
+    "08.03 19.00",
+    "15.03 19.00",
+    "22.03 19.00",
+    "05.04 19.00",
+    "12.04 19.00",
+    "19.04 19.00",
+    "26.04 19.00"
+  ];
+  function parseDate(str) {
+    const [date, time] = str.split(" ");
+    const [day, month] = date.split(".").map(Number);
+    const [hour, minute] = time.split(".").map(Number);
+    const now = /* @__PURE__ */ new Date();
+    let year = now.getFullYear();
+    if (month < now.getMonth() + 1 || month === now.getMonth() + 1 && day < now.getDate()) {
+      year += 1;
+    }
+    return new Date(year, month - 1, day, hour, minute);
+  }
+  var sortedDates = dateStrings.map((str) => ({ str, date: parseDate(str) })).sort((a, b) => a.date - b.date);
+  function startAutoCountdown(selector) {
+    let currentIdx = sortedDates.findIndex((item) => item.date > /* @__PURE__ */ new Date());
+    if (currentIdx === -1)
+      currentIdx = sortedDates.length - 1;
+    function runTimer(idx) {
+      const endDate = sortedDates[idx].date;
+      startCountdown(selector, endDate);
+      const checkInterval = setInterval(() => {
+        if (/* @__PURE__ */ new Date() >= endDate) {
+          clearInterval(checkInterval);
+          if (idx + 1 < sortedDates.length) {
+            runTimer(idx + 1);
+          }
+        }
+      }, 1e3);
+    }
+    runTimer(currentIdx);
+  }
+  document.addEventListener("DOMContentLoaded", function() {
+    startRandomCounter();
+    startAutoCountdown(".timer");
   });
 })();
